@@ -8118,7 +8118,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=78a82617">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cf326b33">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8128,7 +8128,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=d5b1a9af">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=06e5dda9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8155,7 +8155,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6890ccad">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8965736e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8165,7 +8165,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=a2ad6f91">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=10e37482">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8194,7 +8194,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1e953bbe">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e7818343">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8204,7 +8204,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=80bb3dc4">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=4af0cdfe">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8224,289 +8224,24 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ce1cbb1f">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=38f7353c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="O-Motor-Estrutural-de-Classifica%C3%A7%C3%A3o-O&amp;G-(Deploy-Source)">O Motor Estrutural de Classificação O&amp;G (Deploy Source)<a class="anchor-link" href="#O-Motor-Estrutural-de-Classifica%C3%A7%C3%A3o-O&amp;G-(Deploy-Source)">¶</a></h2><p>Abaixo, em anexo para avaliação integral, encontra-se a transcrição pura do código-fonte do <em>Pipeline Auto-Tuning de MLOps</em> rodado no servidor para forjar o Picke Model, integrando Random-Forests, LightGBM e XGBoost competindo simultaneamente contra otimizadores Bayesianos do <strong>Optuna</strong> na busca pelo Limiar PR-AUC e mitigação da penalidade classe <code>scale_pos_weight</code> descompensada.</p>
+<h2 id="O-Motor-Estrutural-de-Classifica%C3%A7%C3%A3o-O&amp;G-(Deploy-Source)">O Motor Estrutural de Classificação O&amp;G (Deploy Source)<a class="anchor-link" href="#O-Motor-Estrutural-de-Classifica%C3%A7%C3%A3o-O&amp;G-(Deploy-Source)">¶</a></h2><p>Abaixo encontra-se a transcrição pura do código-fonte do <em>Pipeline</em> rodado no servidor (com as chamadas de bibliotecas omitidas visualmente para limpeza do relatório).</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a3cf083d">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=adb9f1be">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">xgboost</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xgb</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">lightgbm</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">lgb</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">shap</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">f1_score</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span><span class="p">,</span> <span class="n">precision_recall_curve</span><span class="p">,</span> <span class="n">auc</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">optuna</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">mlflow</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
-
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">'ignore'</span><span class="p">)</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">load_and_preprocess</span><span class="p">(</span><span class="n">filepath</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"&gt;&gt;&gt; Loading and Preprocessing Data..."</span><span class="p">)</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">'Cycle'</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">df</span><span class="p">[</span><span class="s1">'Fail'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'Fail'</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-    
-    <span class="n">sensor_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Temperature'</span><span class="p">,</span> <span class="s1">'Pressure'</span><span class="p">,</span> <span class="s1">'VibrationX'</span><span class="p">,</span> <span class="s1">'VibrationY'</span><span class="p">,</span> <span class="s1">'VibrationZ'</span><span class="p">,</span> <span class="s1">'Frequency'</span><span class="p">]</span>
-    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">sensor_cols</span><span class="p">:</span>
-        <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">ffill</span><span class="p">()</span><span class="o">.</span><span class="n">bfill</span><span class="p">()</span>
-        
-    <span class="k">return</span> <span class="n">df</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">feature_engineering</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">&gt;&gt;&gt; Performing Feature Engineering..."</span><span class="p">)</span>
-    <span class="n">HORIZON</span> <span class="o">=</span> <span class="mi">5</span>
-    <span class="n">df</span><span class="p">[</span><span class="s1">'Target'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'Fail'</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">-</span><span class="n">HORIZON</span><span class="p">)</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">HORIZON</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    
-    <span class="n">predict_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">'Fail'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-    
-    <span class="n">sensor_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Temperature'</span><span class="p">,</span> <span class="s1">'Pressure'</span><span class="p">,</span> <span class="s1">'VibrationX'</span><span class="p">,</span> <span class="s1">'VibrationY'</span><span class="p">,</span> <span class="s1">'VibrationZ'</span><span class="p">,</span> <span class="s1">'Frequency'</span><span class="p">]</span>
-    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">sensor_cols</span><span class="p">:</span>
-        <span class="n">predict_df</span><span class="p">[</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s1">_roll_mean_3'</span><span class="p">]</span> <span class="o">=</span> <span class="n">predict_df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">min_periods</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">predict_df</span><span class="p">[</span><span class="n">col</span><span class="p">])</span>
-        <span class="n">predict_df</span><span class="p">[</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s1">_roll_std_3'</span><span class="p">]</span> <span class="o">=</span> <span class="n">predict_df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">min_periods</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-        <span class="n">predict_df</span><span class="p">[</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s1">_diff'</span><span class="p">]</span> <span class="o">=</span> <span class="n">predict_df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    
-    <span class="n">drop_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Fail'</span><span class="p">,</span> <span class="s1">'Target'</span><span class="p">]</span>
-    <span class="k">if</span> <span class="s1">'Failure_Event'</span> <span class="ow">in</span> <span class="n">predict_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-        <span class="n">drop_cols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'Failure_Event'</span><span class="p">)</span>
-        
-    <span class="n">X</span> <span class="o">=</span> <span class="n">predict_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">drop_cols</span><span class="p">)</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">predict_df</span><span class="p">[</span><span class="s1">'Target'</span><span class="p">]</span>
-    
-    <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">time_based_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_ratio</span><span class="o">=</span><span class="mf">0.2</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">&gt;&gt;&gt; Temporal Splitting..."</span><span class="p">)</span>
-    <span class="n">split_idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">test_ratio</span><span class="p">))</span>
-    
-    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">split_idx</span><span class="p">],</span> <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">split_idx</span><span class="p">:]</span>
-    <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">split_idx</span><span class="p">],</span> <span class="n">y</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">split_idx</span><span class="p">:]</span>
-    
-    <span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'Cycle'</span><span class="p">])</span>
-    <span class="n">X_test</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'Cycle'</span><span class="p">])</span>
-    
-    <span class="k">return</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">log_metrics</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">y_probs</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">""</span><span class="p">):</span>
-    <span class="n">f1</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-    <span class="n">prec</span> <span class="o">=</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">rec</span> <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">acc</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-    <span class="n">roc_auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_probs</span><span class="p">)</span>
-    
-    <span class="n">precision_curve</span><span class="p">,</span> <span class="n">recall_curve</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">precision_recall_curve</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_probs</span><span class="p">)</span>
-    <span class="n">pr_auc</span> <span class="o">=</span> <span class="n">auc</span><span class="p">(</span><span class="n">recall_curve</span><span class="p">,</span> <span class="n">precision_curve</span><span class="p">)</span>
-    
-    <span class="n">metrics</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">prefix</span><span class="si">}</span><span class="s2">f1_score"</span><span class="p">:</span> <span class="n">f1</span><span class="p">,</span>
-        <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">prefix</span><span class="si">}</span><span class="s2">precision"</span><span class="p">:</span> <span class="n">prec</span><span class="p">,</span>
-        <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">prefix</span><span class="si">}</span><span class="s2">recall"</span><span class="p">:</span> <span class="n">rec</span><span class="p">,</span>
-        <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">prefix</span><span class="si">}</span><span class="s2">accuracy"</span><span class="p">:</span> <span class="n">acc</span><span class="p">,</span>
-        <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">prefix</span><span class="si">}</span><span class="s2">roc_auc"</span><span class="p">:</span> <span class="n">roc_auc</span><span class="p">,</span>
-        <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">prefix</span><span class="si">}</span><span class="s2">pr_auc"</span><span class="p">:</span> <span class="n">pr_auc</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">metrics</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">tune_and_train</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">&gt;&gt;&gt; MLflow Optuna Orchestration for Multi-Models..."</span><span class="p">)</span>
-    <span class="n">scale_weight</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span> <span class="o">-</span> <span class="n">y_train</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">y_train</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">+</span> <span class="mf">1e-9</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Base Imbalance weight (scale_pos_weight for trees): </span><span class="si">{</span><span class="n">scale_weight</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-
-    <span class="n">mlflow</span><span class="o">.</span><span class="n">set_tracking_uri</span><span class="p">(</span><span class="s2">"sqlite:///mlflow.db"</span><span class="p">)</span>
-    <span class="n">mlflow</span><span class="o">.</span><span class="n">set_experiment</span><span class="p">(</span><span class="s2">"Predictive_Maintenance_Models"</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">objective</span><span class="p">(</span><span class="n">trial</span><span class="p">):</span>
-        <span class="n">classifier_name</span> <span class="o">=</span> <span class="n">trial</span><span class="o">.</span><span class="n">suggest_categorical</span><span class="p">(</span><span class="s2">"classifier"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"RandomForest"</span><span class="p">,</span> <span class="s2">"LightGBM"</span><span class="p">,</span> <span class="s2">"XGBoost"</span><span class="p">])</span>
-        
-        <span class="k">with</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">start_run</span><span class="p">(</span><span class="n">nested</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">run_name</span><span class="o">=</span><span class="n">classifier_name</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">classifier_name</span> <span class="o">==</span> <span class="s2">"RandomForest"</span><span class="p">:</span>
-                <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-                    <span class="s1">'n_estimators'</span><span class="p">:</span> <span class="n">trial</span><span class="o">.</span><span class="n">suggest_int</span><span class="p">(</span><span class="s1">'rf_n_estimators'</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span>
-                    <span class="s1">'max_depth'</span><span class="p">:</span> <span class="n">trial</span><span class="o">.</span><span class="n">suggest_int</span><span class="p">(</span><span class="s1">'rf_max_depth'</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
-                    <span class="s1">'class_weight'</span><span class="p">:</span> <span class="s1">'balanced'</span><span class="p">,</span>
-                    <span class="s1">'random_state'</span><span class="p">:</span> <span class="mi">42</span>
-                <span class="p">}</span>
-                <span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
-                
-            <span class="k">elif</span> <span class="n">classifier_name</span> <span class="o">==</span> <span class="s2">"LightGBM"</span><span class="p">:</span>
-                <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-                    <span class="s1">'n_estimators'</span><span class="p">:</span> <span class="n">trial</span><span class="o">.</span><span class="n">suggest_int</span><span class="p">(</span><span class="s1">'lgb_n_estimators'</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span>
-                    <span class="s1">'max_depth'</span><span class="p">:</span> <span class="n">trial</span><span class="o">.</span><span class="n">suggest_int</span><span class="p">(</span><span class="s1">'lgb_max_depth'</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
-                    <span class="s1">'learning_rate'</span><span class="p">:</span> <span class="n">trial</span><span class="o">.</span><span class="n">suggest_float</span><span class="p">(</span><span class="s1">'lgb_learning_rate'</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span>
-                    <span class="s1">'scale_pos_weight'</span><span class="p">:</span> <span class="n">scale_weight</span><span class="p">,</span>
-                    <span class="s1">'random_state'</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
-                    <span class="s1">'verbose'</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span>
-                <span class="p">}</span>
-                <span class="n">model</span> <span class="o">=</span> <span class="n">lgb</span><span class="o">.</span><span class="n">LGBMClassifier</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
-                
-            <span class="k">else</span><span class="p">:</span> <span class="c1"># XGBoost</span>
-                <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-                    <span class="s1">'n_estimators'</span><span class="p">:</span> <span class="n">trial</span><span class="o">.</span><span class="n">suggest_int</span><span class="p">(</span><span class="s1">'xgb_n_estimators'</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span>
-                    <span class="s1">'max_depth'</span><span class="p">:</span> <span class="n">trial</span><span class="o">.</span><span class="n">suggest_int</span><span class="p">(</span><span class="s1">'xgb_max_depth'</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
-                    <span class="s1">'learning_rate'</span><span class="p">:</span> <span class="n">trial</span><span class="o">.</span><span class="n">suggest_float</span><span class="p">(</span><span class="s1">'xgb_learning_rate'</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span>
-                    <span class="s1">'scale_pos_weight'</span><span class="p">:</span> <span class="n">scale_weight</span><span class="p">,</span>
-                    <span class="s1">'eval_metric'</span><span class="p">:</span> <span class="s1">'logloss'</span><span class="p">,</span>
-                    <span class="s1">'random_state'</span><span class="p">:</span> <span class="mi">42</span>
-                <span class="p">}</span>
-                <span class="n">model</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">XGBClassifier</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
-
-            <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-            
-            <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-            <span class="n">y_probs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
-            
-            <span class="n">metrics</span> <span class="o">=</span> <span class="n">log_metrics</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">y_probs</span><span class="p">)</span>
-            
-            <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">"classifier"</span><span class="p">,</span> <span class="n">classifier_name</span><span class="p">)</span>
-            <span class="n">mlflow</span><span class="o">.</span><span class="n">log_params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
-            <span class="n">mlflow</span><span class="o">.</span><span class="n">log_metrics</span><span class="p">(</span><span class="n">metrics</span><span class="p">)</span>
-            
-            <span class="c1"># Using PR_AUC as the main target for Optuna since data is highly imbalanced</span>
-            <span class="c1"># Alternative: F1-Score</span>
-            <span class="k">return</span> <span class="n">metrics</span><span class="p">[</span><span class="s2">"pr_auc"</span><span class="p">]</span>
-
-    <span class="n">study</span> <span class="o">=</span> <span class="n">optuna</span><span class="o">.</span><span class="n">create_study</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s2">"maximize"</span><span class="p">)</span>
-    <span class="k">with</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">start_run</span><span class="p">(</span><span class="n">run_name</span><span class="o">=</span><span class="s2">"Optuna_HyperSearch"</span><span class="p">):</span>
-        <span class="c1"># Limited to 20 trials for demonstration and time limits</span>
-        <span class="n">study</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span> <span class="n">n_trials</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-        
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">=== Best Trial ==="</span><span class="p">)</span>
-        <span class="n">trial</span> <span class="o">=</span> <span class="n">study</span><span class="o">.</span><span class="n">best_trial</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  PR-AUC Value: </span><span class="si">{</span><span class="n">trial</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"  Params: "</span><span class="p">)</span>
-        
-        <span class="c1"># We need to extract the best params to retrain the final model</span>
-        <span class="n">best_params</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">trial</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-            <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="sa">f</span><span class="s2">"best_</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">key</span> <span class="o">!=</span> <span class="s2">"classifier"</span><span class="p">:</span>
-                <span class="c1"># Remove prefix from param names to instantiate model</span>
-                <span class="n">clean_key</span> <span class="o">=</span> <span class="s2">"_"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"_"</span><span class="p">)[</span><span class="mi">1</span><span class="p">:])</span>
-                <span class="n">best_params</span><span class="p">[</span><span class="n">clean_key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
-
-        <span class="n">classifier_name</span> <span class="o">=</span> <span class="n">trial</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">"classifier"</span><span class="p">]</span>
-        
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">&gt;&gt;&gt; Retraining Best Model: </span><span class="si">{</span><span class="n">classifier_name</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-        <span class="n">best_params</span><span class="p">[</span><span class="s1">'random_state'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">42</span>
-        
-        <span class="k">if</span> <span class="n">classifier_name</span> <span class="o">==</span> <span class="s2">"RandomForest"</span><span class="p">:</span>
-            <span class="n">best_params</span><span class="p">[</span><span class="s1">'class_weight'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'balanced'</span>
-            <span class="n">final_model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="o">**</span><span class="n">best_params</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">classifier_name</span> <span class="o">==</span> <span class="s2">"LightGBM"</span><span class="p">:</span>
-            <span class="n">best_params</span><span class="p">[</span><span class="s1">'scale_pos_weight'</span><span class="p">]</span> <span class="o">=</span> <span class="n">scale_weight</span>
-            <span class="n">best_params</span><span class="p">[</span><span class="s1">'verbose'</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-            <span class="n">final_model</span> <span class="o">=</span> <span class="n">lgb</span><span class="o">.</span><span class="n">LGBMClassifier</span><span class="p">(</span><span class="o">**</span><span class="n">best_params</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">best_params</span><span class="p">[</span><span class="s1">'scale_pos_weight'</span><span class="p">]</span> <span class="o">=</span> <span class="n">scale_weight</span>
-            <span class="n">best_params</span><span class="p">[</span><span class="s1">'eval_metric'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'logloss'</span>
-            <span class="n">final_model</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">XGBClassifier</span><span class="p">(</span><span class="o">**</span><span class="n">best_params</span><span class="p">)</span>
-            
-        <span class="n">final_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-        
-        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">final_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-        <span class="n">y_probs</span> <span class="o">=</span> <span class="n">final_model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
-        
-        <span class="n">final_metrics</span> <span class="o">=</span> <span class="n">log_metrics</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">y_probs</span><span class="p">)</span>
-        
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">&gt;&gt;&gt; Final Evaluation metrics:"</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">final_metrics</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">v</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-            
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'final_metrics.json'</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-            <span class="n">final_metrics</span><span class="p">[</span><span class="s1">'best_model'</span><span class="p">]</span> <span class="o">=</span> <span class="n">classifier_name</span>
-            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">trial</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="k">if</span> <span class="n">k</span> <span class="o">!=</span> <span class="s2">"classifier"</span><span class="p">:</span>
-                   <span class="n">final_metrics</span><span class="p">[</span><span class="sa">f</span><span class="s2">"hiperparam_</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
-            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">final_metrics</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-        
-        <span class="n">mlflow</span><span class="o">.</span><span class="n">sklearn</span><span class="o">.</span><span class="n">log_model</span><span class="p">(</span><span class="n">final_model</span><span class="p">,</span> <span class="s2">"best_model_artifact"</span><span class="p">)</span>
-        
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">&gt;&gt;&gt; Generating SHAP Values and plotting..."</span><span class="p">)</span>
-        <span class="n">explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">TreeExplainer</span><span class="p">(</span><span class="n">final_model</span><span class="p">)</span>
-        <span class="n">shap_values</span> <span class="o">=</span> <span class="n">explainer</span><span class="o">.</span><span class="n">shap_values</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-        
-        <span class="c1"># Handle different SHAP output formats based on model (LightGBM/RF vs XGBoost)</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">shap_values</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-            <span class="n">sv</span> <span class="o">=</span> <span class="n">shap_values</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">shap_values</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">shap_values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">sv</span> <span class="o">=</span> <span class="n">shap_values</span>
-            
-        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"SHAP Summary Plot - </span><span class="si">{</span><span class="n">classifier_name</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-        <span class="n">shap</span><span class="o">.</span><span class="n">summary_plot</span><span class="p">(</span><span class="n">sv</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">'shap_summary.png'</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">'tight'</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"SHAP plot saved as 'shap_summary.png'."</span><span class="p">)</span>
-        
-        <span class="k">return</span> <span class="n">final_model</span><span class="p">,</span> <span class="n">final_metrics</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
-    <span class="n">filepath</span> <span class="o">=</span> <span class="s2">"Test-O_G_Equipment_Data.csv"</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">load_and_preprocess</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
-    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">feature_engineering</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-    
-    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">time_based_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-    
-    <span class="n">best_model</span><span class="p">,</span> <span class="n">metrics</span> <span class="o">=</span> <span class="n">tune_and_train</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-    
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">&gt;&gt;&gt; Exporting local independent pickle for API deployment..."</span><span class="p">)</span>
-    <span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">best_model</span><span class="p">,</span> <span class="s1">'xgboost_model.pkl'</span><span class="p">)</span>  
-    <span class="c1"># Still naming it xgboost_model.pkl globally to prevent breaking app.py changes</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"Model successfully exported as 'xgboost_model.pkl'."</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cf63c1b7">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="O-Motor-Estrutural-de-Classifica%C3%A7%C3%A3o-O&amp;G-(Deploy-Source)">O Motor Estrutural de Classificação O&amp;G (Deploy Source)<a class="anchor-link" href="#O-Motor-Estrutural-de-Classifica%C3%A7%C3%A3o-O&amp;G-(Deploy-Source)">¶</a></h2><p>Abaixo, em anexo para avaliação integral, encontra-se a transcrição pura do código-fonte do <em>Pipeline Auto-Tuning de MLOps</em> rodado no servidor para forjar o Picke Model, integrando Random-Forests, LightGBM e XGBoost competindo simultaneamente contra otimizadores Bayesianos do <strong>Optuna</strong> na busca pelo Limiar PR-AUC e mitigação da penalidade classe <code>scale_pos_weight</code> descompensada.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=39429e89">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">xgboost</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xgb</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">lightgbm</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">lgb</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">shap</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">f1_score</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span><span class="p">,</span> <span class="n">precision_recall_curve</span><span class="p">,</span> <span class="n">auc</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">optuna</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">mlflow</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
-
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">'ignore'</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">'ignore'</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">load_and_preprocess</span><span class="p">(</span><span class="n">filepath</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"&gt;&gt;&gt; Loading and Preprocessing Data..."</span><span class="p">)</span>
