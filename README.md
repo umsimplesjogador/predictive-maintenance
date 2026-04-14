@@ -31,7 +31,7 @@ Basta acionar localmente de sua máquina a suíte script do repositório:
 ```bash
 python src/test_api.py
 ```
-Essa rotina buscará uma temperatura de quebra cirúrgica pré mapeada em nossos bancos locais sob aproximação histórica, fabricará os pacotes e extrairá em Milisegundos a previsão real provida peló Node dos EUA.
+Essa rotina buscará uma temperatura de quebra cirúrgica pré mapeada em nossos bancos locais sob aproximação histórica, fabricará os pacotes e extrairá em Milisegundos a previsão real provida pelo Node dos EUA.
 
 ## 🛠️ Tecnologias de Elite no Ecossistema
 ⚙️ `LightGBM & XGBoost` (Classificação Estocástica)\
