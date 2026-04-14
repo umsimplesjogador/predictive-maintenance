@@ -3,6 +3,8 @@ from pydantic import BaseModel
 import pandas as pd
 import joblib
 import os
+import xgboost
+import lightgbm
 
 app = FastAPI(title="Predictive Maintenance API", version="1.0")
 
