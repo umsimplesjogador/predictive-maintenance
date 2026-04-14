@@ -16,23 +16,23 @@ Este modelo processa as predições dos rolamentos de todas as máquinas num cic
 ```mermaid
 flowchart TD
     subgraph Ingestão e Engenharia ["Data Engineering (DLT)"]
-        Raw[(JSON/Logs Legados O&G)] --> |Auto Loader| Bronze[Bronze Table (Unity Catalog)]
-        Bronze -->|Databricks DLT| Silver[Silver Table (Limpeza/Nulos FFill)]
-        Silver -->|Feature Engineering| GoldFeature[(Feature Store Table no UC)]
+        Raw[("JSON/Logs Legados O&G")] --> |Auto Loader| Bronze["Bronze Table (Unity Catalog)"]
+        Bronze -->|Databricks DLT| Silver["Silver Table (Limpeza/Nulos FFill)"]
+        Silver -->|Feature Engineering| GoldFeature[("Feature Store Table no UC")]
     end
 
     subgraph MLOps e Inferência ["MLOps / Databricks Workflows"]
-        ModelRegistry((MLflow Model Registry))
-        GoldFeature -->|Job Noturno Agendado| BatchInference[Databricks Workflow: Batch Infer\nCarrega xgboost_model.pkl]
+        ModelRegistry(("MLflow Model Registry"))
+        GoldFeature -->|Job Noturno Agendado| BatchInference["Databricks Workflow: Batch Infer\nCarrega xgboost_model.pkl"]
         ModelRegistry -.->|Injeta versão PROD| BatchInference
-        BatchInference -->|Aplica .predict_proba| GoldSBR[(Gold Table Predições da Frota)]
+        BatchInference -->|Aplica .predict_proba| GoldSBR[("Gold Table Predições da Frota")]
     end
 
     subgraph Observabilidade e Drift ["Databricks Lakehouse Monitoring"]
-        GoldFeature -.-> DeltaMonitor[Monitor Assessment Profiling]
+        GoldFeature -.-> DeltaMonitor["Monitor Assessment Profiling"]
         GoldSBR -.-> DeltaMonitor
-        DeltaMonitor -->|Cálculo Assíncrono Semanal\n K-S, PSI| DriftResults[(System Tables / Metrics)]
-        DriftResults -.->|Alarme Slack/Dev| Engineer((Sênior DS))
+        DeltaMonitor -->|Cálculo Assíncrono Semanal\n K-S, PSI| DriftResults[("System Tables / Metrics")]
+        DriftResults -.->|Alarme Slack/Dev| Engineer(("Sênior DS"))
     end
 ```
 
@@ -49,27 +49,27 @@ Quando o engenheiro visualiza um manômetro no CCO operacional em tempo real, no
 ```mermaid
 flowchart TD
     subgraph Client ["Client / CCO de Operação"]
-        Edge[Edge Sensor / SCADA] -->|POST /predict via HTTPs| APIEndpoint
+        Edge["Edge Sensor / SCADA"] -->|POST /predict via HTTPs| APIEndpoint
     end
 
     subgraph Databricks Serving ["Databricks Model Serving (Serverless API)"]
         direction LR
-        APIEndpoint[Endpoint de Inferência]
+        APIEndpoint["Endpoint de Inferência"]
         APIEndpoint -->|Lookup Rápido| LowLatDB
-        APIEndpoint -->|Executa XGBoost| Score[Predict_proba: 'Falha Provável']
+        APIEndpoint -->|Executa XGBoost| Score["Predict_proba: 'Falha Provável'"]
         
         %% Justificativa do Drift: Inference Tables espelhos %%
-        APIEndpoint -.->|Logging Orgânico Assíncrono| InferenceTables[(Unity Catalog\nInference Payload Log)]
+        APIEndpoint -.->|Logging Orgânico Assíncrono| InferenceTables[("Unity Catalog\nInference Payload Log")]
     end
 
     subgraph Feature Store Low Latency ["Online Store Synchronization"]
-        UCOffline[(Unity Catalog Feature Store\n- Datalake Offline -)] -->|Materialized Syncing/Cron| LowLatDB[(Databricks Online Tables\nAWS DynamoDB / Redis)]
+        UCOffline[("Unity Catalog Feature Store\n- Datalake Offline -")] -->|Materialized Syncing/Cron| LowLatDB[("Databricks Online Tables\nAWS DynamoDB / Redis")]
     end
 
     subgraph Monitoramento Real-Time Espelhado ["Observability Desacoplada"]
-        InferenceTables -->|Batch Semanal| Monitor[Databricks Lakehouse Monitoring]
-        BaselineData[(Base de Treino Original)] --> Monitor
-        Monitor -->|Métricas PSI e K-S\nComparação Assíncrona| MonitorDash[Dashboard de Alertas de Drift]
+        InferenceTables -->|Batch Semanal| Monitor["Databricks Lakehouse Monitoring"]
+        BaselineData[("Base de Treino Original")] --> Monitor
+        Monitor -->|Métricas PSI e K-S\nComparação Assíncrona| MonitorDash["Dashboard de Alertas de Drift"]
     end
     
     Score --> Edge
