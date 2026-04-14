@@ -4,6 +4,8 @@ import xgboost as xgb
 import lightgbm as lgb
 from sklearn.ensemble import RandomForestClassifier
 import joblib
+import shap
+import matplotlib.pyplot as plt
 from sklearn.metrics import classification_report, roc_auc_score, f1_score, accuracy_score, precision_score, recall_score, precision_recall_curve, auc
 import warnings
 import optuna
@@ -192,6 +194,23 @@ def tune_and_train(X_train, X_test, y_train, y_test):
             json.dump(final_metrics, f, indent=4)
         
         mlflow.sklearn.log_model(final_model, "best_model_artifact")
+        
+        print("\n>>> Generating SHAP Values and plotting...")
+        explainer = shap.TreeExplainer(final_model)
+        shap_values = explainer.shap_values(X_test)
+        
+        # Handle different SHAP output formats based on model (LightGBM/RF vs XGBoost)
+        if isinstance(shap_values, list):
+            sv = shap_values[1] if len(shap_values) > 1 else shap_values[0]
+        else:
+            sv = shap_values
+            
+        plt.figure()
+        plt.title(f"SHAP Summary Plot - {classifier_name}")
+        shap.summary_plot(sv, X_test, show=False)
+        plt.savefig('shap_summary.png', bbox_inches='tight')
+        plt.close()
+        print("SHAP plot saved as 'shap_summary.png'.")
         
         return final_model, final_metrics
 
