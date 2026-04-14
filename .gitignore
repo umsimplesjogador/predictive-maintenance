@@ -1,0 +1,30 @@
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+.DS_Store
+.ipynb_checkpoints
+
+# MLflow tracking
+mlruns/
+*.db
+
+# Configs
+.env
+
+# Forbidden Files (Purged by architecture design)
+INSTRUÇÕES TESTE DS.odt
+Test O_G_Equipment_Data.xlsx
+technical_interview_guide.md
+nome_sobrenome_teste_shape.ipynb
+nome_sobrenome_teste_shape.html
+executive_presentation.html
