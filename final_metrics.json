@@ -1,0 +1,12 @@
+{
+    "f1_score": 0.0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "accuracy": 0.9251700680272109,
+    "roc_auc": 0.5218978102189781,
+    "pr_auc": 0.07725849242367511,
+    "best_model": "LightGBM",
+    "hiperparam_lgb_n_estimators": 192,
+    "hiperparam_lgb_max_depth": 10,
+    "hiperparam_lgb_learning_rate": 0.18946724158468609
+}

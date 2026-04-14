@@ -13,3 +13,10 @@ venv.bak/
 
 .DS_Store
 .ipynb_checkpoints
+
+# MLflow tracking
+mlruns/
+*.db
+
+# Configs
+.env
